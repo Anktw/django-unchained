@@ -1,34 +1,7 @@
 # Django-Unchained
-A project which will be a good starting point for...
 * Django RESTful API server for Single Page Application
 * Multi-tenant application working with Postgresql and gunicorn
 * Unit test with pytest, not with Django test
-* Authorization by JWT access/refresh tokens
-
-## Requisites
-* Python 3.8 or later
-* django 3.1 or later
-* django_rest_framework, django_rest_framework_simplejwt
-* django-environ, django-cleanup
-* psycopg2-binary
-* pytest, pytest-django, pytest-env, pytest-order
-* Docker, docker-compose
-
-You can see the details of used python packages in requirements.txt.
-Major packages are illustrated in the table below.
-#### Table of installed python packages
-| Package | Usage |
-| ------- | ------ |
-| djangorestframework | Implement RESTful API classes |
-| djangorestframework-simplejwt | Json web token used for auth |
-| django-environ | Read .env file |
-| django-cleanup | Uploaded file in dir is properly deleted |
-| gunicorn | Python wsgi http server used for production |
-| psycopg2-binary | Access to postgresql DB |
-| pytest | Unit test tool alternative to built-in Django test |
-| pytest-django | pytest extention for django framework |
-| pytest-env | Enable to set env vars  in pytest.ini |
-| python-box | Enable dot access of dictionary values |
 
 ## Get started
 ### 0. Use docker-compose
@@ -48,11 +21,9 @@ Once you checked containers are up and running, proceed to step 11.
 Using Python virtualenv is strongly recommended. There're many tutorials to set it up so google it.
 ### 2. Pip install in virtualenv
 ```
-$ pip install --upgrade pip
 $ pip install -r requirements.txt
 ```
 ### 3. Edit .env file (or pytest.ini for test)
-Environmental variables for development and production are supposed to be set in .env file located in root directory, and ones for test are defined in pytest.ini file. If you work on .env, you can use dot.env.default, which is a template of .env.
 ```
 $ cp dot.env.default .env
 ```
@@ -140,28 +111,15 @@ $ pytest
 ```
 If you'd like to add options, edit pytest.ini file.
 
-### 7. Prepare index.html
-Prepare index.html which is used for your single page application. You can use [vue-boilerplate](https://github.com/daichi-yoshikawa/vue-boilerplate).
-
-In case of using vue-boilerplate, you can place it at the same level as django-unchained as below.
-```
-Web application root
-├── vue-boilerplate (Of course you will have different name for your project)
-└── django-unchained (Of course you will have different name for your project)
-```
-
-By default, vue-boilerplate will generate index.html under vue-boilerplate/dist/ and bundled js and css files under vue-boilerplate/dist/static directories respectively.
-For more details, refer to README.md of vue-boilerplate.
-
-### 8. Run development server (production? Proceed to section 9-10)
+### 7. Run development server (production? Proceed to section 9-10)
 ```
 $ python manage.py runserver
 ```
 
-### 9. Edit gunicorn config file (for production)
+### 8. Edit gunicorn config file (for production)
 Edit gunicorn.conf.py to configure gunicorn. This file is automatically loaded when gunicorn is launched. If you use development server, you don't need to edit this file.
 
-### 10. Run gunicorn (for production)
+### 9. Run gunicorn (for production)
 In order to run gunicorn, execute the following command,
 Or you can use docker-compose.yml as illustrated in step 1.
 ```
@@ -169,7 +127,7 @@ $ gunicorn config.wsgi
 ```
 If you use development server provided by django, you don't need to run gunicorn.
 
-### 11. Access to index.html
+### 10. Access to index.html
 Open your favorite browser, and input localhost:8000/entry. You'll see entry page of sample web app now :)
 
 ### (Optional) Insert test data
@@ -300,5 +258,3 @@ Or you may like to clear all record in db and reset sequences as well. In the ca
 $ python manage.py reset_db
 $ python manage.py migrate
 ```
-
-
