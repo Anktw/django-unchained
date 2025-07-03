@@ -9,7 +9,11 @@ class TenantSerializer(BaseModelSerializer):
 
     class Meta(BaseModelSerializer.Meta):
         model = models.Tenant
-        read_only_fields = ('domain',) + BaseModelSerializer.Meta.read_only_fields
+        base_read_only_fields = BaseModelSerializer.Meta.read_only_fields
+        if not isinstance(base_read_only_fields, (list, tuple)):
+            base_read_only_fields = (base_read_only_fields,) if base_read_only_fields else ()
+        
+        read_only_fields = ('domain', ) + tuple(base_read_only_fields)
 
     def get_image(self, obj):
         request = self.context.get('request')

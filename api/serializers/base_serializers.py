@@ -19,9 +19,9 @@ class BaseSerializer(serializers.Serializer):
 
 class BaseModelSerializer(serializers.ModelSerializer):
     class Meta:
-        exclude = ('created_at', 'updated_at', 'deleted_at')
-        read_only_fields = ('id')
-        extra_kwargs= {'created_by':{'write_only': True}, 'updated_by':{'write_only': True}}
+        exclude = ('created_at', 'updated_at', 'deleted_at',)
+        read_only_fields = ('id',)
+        extra_kwargs= {'created_by':{'write_only': True}, 'updated_by':{'write_only': True},}
 
     def __init__(self, instance=None, data=empty, tenant=None, tenant_user=None, user=None, extra_request=None, **kwargs):
         if extra_request is not None:

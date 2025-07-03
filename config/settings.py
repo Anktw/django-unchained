@@ -49,13 +49,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_extensions',
-    'corsheaders',
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
     'core.apps.CoreConfig',
     'api.apps.ApiConfig',
-    'django_cleanup.apps.CleanupConfig',
 ]
 
 MIDDLEWARE = [
@@ -66,8 +63,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     
 ]
 
@@ -163,7 +158,10 @@ CSRF_COOKIE_HTTPONLY = True
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 #log settings
+LOG_FILE_FULL_PATH = env.str('LOGGER_FILE_PATH', default=BASE_DIR / 'logs' / 'application.log')
+LOGS_DIR = Path(LOG_FILE_FULL_PATH).parent
 
+os.makedirs(LOGS_DIR, exist_ok=True)
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -171,30 +169,59 @@ LOGGING = {
         'default': {
             'format': '%(asctime)s [%(levelname)s] %(name)s: %(message)s',
         },
+        'verbose': { # Added a more verbose formatter for file logs
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+        },
     },
     'handlers': {
         'console': {
             'class': 'logging.StreamHandler',
-            'level': 'INFO',
+            'level': 'INFO', # Level overridden by logger config
             'formatter': 'default',
             'stream': 'ext://sys.stdout',
         },
         'file': {
-            'class': 'logging.FileHandler',
-            'level': 'INFO',
-            'formatter': 'default',
-            'filename': env.str('LOGGER_FILE_PATH', default='/var/log/application.log'),
+            'class': 'logging.handlers.RotatingFileHandler', # Recommended: RotatingFileHandler
+            'level': 'INFO', # Level overridden by logger config
+            'formatter': 'verbose', # Use the verbose formatter
+            'filename': LOG_FILE_FULL_PATH, # <--- Use the path derived from env var
+            'maxBytes': 1024 * 1024 * 10,  # 10 MB per file
+            'backupCount': 5,            # Keep 5 backup files
         },
+        'error_file': { # Optional: Add a handler for ERROR and CRITICAL logs only
+            'class': 'logging.handlers.RotatingFileHandler',
+            'level': 'ERROR',
+            'formatter': 'verbose',
+            'filename': LOGS_DIR / 'errors.log', # Example for errors.log in the same directory
+            'maxBytes': 1024 * 1024 * 5,
+            'backupCount': 3,
+        }
     },
     'loggers': {
-        '': {
-            'handlers': env.list('LOGGER_HANDLERS', default=['file']),
-            'level': env.str('LOGGER_LEVEL', default='INFO'),
-            'propagate': False,
+        '': { # Root logger
+            'handlers': env.list('LOGGER_HANDLERS', default=['console', 'file']),
+            'level': env.str('LOGGER_LEVEL', default='INFO'), # Default to INFO if not set
+            'propagate': True, # Keep True for root logger
         },
         'django': {
-            'handlers': env.list('LOGGER_HANDLERS', default=['file']),
-            'level': env.str('LOGGER_LEVEL', default='INFO'),
+            'handlers': env.list('LOGGER_HANDLERS', default=['console', 'file']), # Using same handler list from env
+            'level': env.str('LOGGER_LEVEL', default='INFO'), # Using same level from env
+            'propagate': False, # Important: False to prevent duplicate logs
+        },
+        'api': { # Example for your app's logger
+            'handlers': ['console', 'file', 'error_file'],
+            'level': 'DEBUG', # Often want more detail for your own app in dev
+            'propagate': False,
+        },
+        'django.server': { # For Django runserver output
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+        'gunicorn': { # For Gunicorn logs
+            'handlers': ['console', 'file'],
+            'level': env.str('LOGGER_LEVEL', default='INFO'), # Could use a specific GUNICORN_LOGGER_LEVEL if needed
             'propagate': False,
         },
     },
@@ -218,7 +245,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=env.int('ACCESS_TOKEN_LIFETIME_MINS')),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=env.int('REFRESH_TOKEN_LIFETIME_DAYS')),
-    'ALGORITHM': env.str('ALOGORITHM'),
+    'ALGORITHM': env.str('ALGORITHM'),
     'AUTH_HEADER_TYPES': ('Bearer',),
     'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
     'USER_ID_FIELD': 'id',
@@ -250,5 +277,5 @@ TENANT_INVITATION_CODE_REQUEST_MAX_SIZE = (
 
 FAILED_LOGIN_ATTEMPT_MAX_COUNT = env.int('FAILED_LOGIN_ATTEMPT_MAX_COUNT')
 LOGIN_LOCK_PERIOD_MINS = env.int('LOGIN_LOCK_PERIOD_MINS')
-PASSWORD_RESET_CODE_LENGTH = env.int('PASSWORD_RESET_CODE_LENGTH')
-PASSWORD_RESET_CODE_LIFETIME_MINS = env.int('PASSWORD_RESET_CODE_LIFETIME_MINS')
+PASSWORD_RESET_LENGTH = env.int('PASSWORD_RESET_LENGTH')
+PASSWORD_RESET_LIFETIME_MINS = env.int('PASSWORD_RESET_LIFETIME_MINS')

@@ -52,7 +52,7 @@ class PasswordResetSerializer(BaseModelSerializer):
         return data
 
 class PasswordResetEmailSerializer(BaseSerializer):
-    reset_code = serializers.CharField(max_length=settings.PASSWORD_RESET_CODE_LENGTH, write_only=True)
+    reset_code = serializers.CharField(max_length=settings.PASSWORD_RESET_LENGTH, write_only=True)
     email = serializers.CharField(max_length=200, required=False)
 
     def validate(self, data):
