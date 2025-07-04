@@ -202,3 +202,6 @@ WARNING 2025-07-04 16:28:33,947 log 20720 17656 Bad Request: /api/v1/email/signu
 ERROR 2025-07-04 17:13:47,445 exception_handler 21244 18948 <class 'rest_framework.exceptions.ValidationError'>: {'valid_till': [ErrorDetail(string='This field is required.', code='required')]}
 ERROR 2025-07-04 17:13:47,445 exception_handler 21244 18948 Response data: {'valid_till': [ErrorDetail(string='This field is required.', code='required')]}
 WARNING 2025-07-04 17:13:47,446 log 21244 18948 Bad Request: /api/v1/email/signup/verification/
+ERROR 2025-07-04 17:56:44,330 exception_handler 18728 21540 <class 'rest_framework.exceptions.ValidationError'>: {'valid_till': [ErrorDetail(string='This field is required.', code='required')]}
+ERROR 2025-07-04 17:56:44,331 exception_handler 18728 21540 Response data: {'valid_till': [ErrorDetail(string='This field is required.', code='required')]}
+WARNING 2025-07-04 17:56:44,333 log 18728 21540 Bad Request: /api/v1/email/signup/verification/

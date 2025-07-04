@@ -22,3 +22,5 @@ ERROR 2025-07-04 16:28:33,946 exception_handler 20720 17656 <class 'rest_framewo
 ERROR 2025-07-04 16:28:33,946 exception_handler 20720 17656 Response data: {'valid_till': [ErrorDetail(string='This field is required.', code='required')]}
 ERROR 2025-07-04 17:13:47,445 exception_handler 21244 18948 <class 'rest_framework.exceptions.ValidationError'>: {'valid_till': [ErrorDetail(string='This field is required.', code='required')]}
 ERROR 2025-07-04 17:13:47,445 exception_handler 21244 18948 Response data: {'valid_till': [ErrorDetail(string='This field is required.', code='required')]}
+ERROR 2025-07-04 17:56:44,330 exception_handler 18728 21540 <class 'rest_framework.exceptions.ValidationError'>: {'valid_till': [ErrorDetail(string='This field is required.', code='required')]}
+ERROR 2025-07-04 17:56:44,331 exception_handler 18728 21540 Response data: {'valid_till': [ErrorDetail(string='This field is required.', code='required')]}

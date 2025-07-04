@@ -8,11 +8,11 @@ sys.path.append(os.path.join(os.path.dirname(__file__), 'helpers'))
 
 
 @pytest.mark.order(1)
-@pytest.mark.djang_db
+@pytest.mark.django_db
 @pytest.mark.usefixtures('django_db_setup')
 
 class TestUserSignUp:
-    @pytest.mark.parametrize('req', 'expected',[
+    @pytest.mark.parametrize('req, expected', [
         (dict(data=dict(email=email_from(1), valid_till= get_verification_code_valid_till())), dict(status=200)),
     ])
     def test_email_verification(self, client, base_url, req, expected, settings):
