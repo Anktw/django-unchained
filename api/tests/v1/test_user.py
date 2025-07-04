@@ -49,15 +49,22 @@ class TestUserSignUp:
         # Preprocess
         model = models.User
         n_data = model.objects.all().count()
-        if 'not_verified' not in req:
+        is_expected_validation_error = 'not_verified' in req and expected['status'] == 400
+        if not is_expected_validation_error:
             req['data']['verification_code'] = (email_verification_code(email_from(req['seed'])))
         else:
             if 'verification_code' in req['data']:
                 del req['data']['verification_code']
 
         # Execution
-        res = client.post(f'{base_url}/users/', req['data'])
-        assert res.status_code == expected['status']
+        if is_expected_validation_error:
+            with pytest.raises(ValidationError) as excinfo:
+                client.post(f'{base_url}/users/', req['data'])
+                assert 'Invitation code or verification code is needed to create' in str(excinfo.value)
+            return
+        else:
+            res = client.post(f'{base_url}/users/', req['data'])
+            assert res.status_code == expected['status']
 
         # Common postprocess
         query = model.objects.filter(first_name=req['data']['first_name'], last_name=req['data']['last_name'], email=req['data']['email'])
@@ -66,8 +73,7 @@ class TestUserSignUp:
         if not is_ok(res.status_code):
             assert n_data == model.objects.all().count()
             assert query.count() == 0
-            assert 'Invitation code or verification code is needed to create' in str(res.data)
-            return
+            pass
 
         assert n_data + 1 == model.objects.all().count()
         assert query.count() == 1

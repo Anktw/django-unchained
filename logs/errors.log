@@ -29,3 +29,6 @@ ERROR 2025-07-04 19:00:51,686 exception_handler 22804 3112 <class 'rest_framewor
 ERROR 2025-07-04 19:05:02,767 exception_handler 21584 16292 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
 ERROR 2025-07-04 19:07:35,867 exception_handler 11984 19568 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
 ERROR 2025-07-04 19:10:41,068 exception_handler 24720 24024 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-04 19:31:54,738 exception_handler 23248 26396 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-04 19:31:55,458 exception_handler 23248 26396 <class 'rest_framework.exceptions.ValidationError'>: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-04 19:31:55,464 exception_handler 23248 26396 Response data: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
