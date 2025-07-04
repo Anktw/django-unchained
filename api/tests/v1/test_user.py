@@ -4,7 +4,7 @@ from rest_framework import status
 from core import models
 import os, sys
 sys.path.append(os.path.join(os.path.dirname(__file__), 'helpers'))
-
+from rest_framework.exceptions import ValidationError
 
 
 @pytest.mark.order(1)
@@ -19,6 +19,7 @@ class TestUserSignUp:
         # Preprocess
         model = models.EmailVerification
         n_data = model.objects.all().count()
+        
         # Execution
         res = client.post(f'{base_url}/email/signup/verification/', req['data'])
         assert res.status_code == expected['status']
@@ -48,8 +49,11 @@ class TestUserSignUp:
         # Preprocess
         model = models.User
         n_data = model.objects.all().count()
-        if not 'not_verified' in req:
+        if 'not_verified' not in req:
             req['data']['verification_code'] = (email_verification_code(email_from(req['seed'])))
+        else:
+            if 'verification_code' in req['data']:
+                del req['data']['verification_code']
 
         # Execution
         res = client.post(f'{base_url}/users/', req['data'])
@@ -62,6 +66,7 @@ class TestUserSignUp:
         if not is_ok(res.status_code):
             assert n_data == model.objects.all().count()
             assert query.count() == 0
+            assert 'Invitation code or verification code is needed to create' in str(res.data)
             return
 
         assert n_data + 1 == model.objects.all().count()
