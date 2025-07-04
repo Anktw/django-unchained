@@ -24,3 +24,4 @@ ERROR 2025-07-04 17:13:47,445 exception_handler 21244 18948 <class 'rest_framewo
 ERROR 2025-07-04 17:13:47,445 exception_handler 21244 18948 Response data: {'valid_till': [ErrorDetail(string='This field is required.', code='required')]}
 ERROR 2025-07-04 17:56:44,330 exception_handler 18728 21540 <class 'rest_framework.exceptions.ValidationError'>: {'valid_till': [ErrorDetail(string='This field is required.', code='required')]}
 ERROR 2025-07-04 17:56:44,331 exception_handler 18728 21540 Response data: {'valid_till': [ErrorDetail(string='This field is required.', code='required')]}
+ERROR 2025-07-04 18:04:54,360 exception_handler 14008 22500 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]

@@ -4,6 +4,7 @@ from helpers.utils import *
 from django.core.management import call_command
 import os
 from django.db import connection
+from rest_framework import status
 
 @pytest.fixture()
 def client():
@@ -56,9 +57,11 @@ def bearer_token(token):
 @pytest.fixture(scope='function')
 def email_verification_code(client, base_url):
     def _email_verification_code(*args, **kwargs):
-        res = client.post(f'{base_url}/email/signup/verification/', { 'email': args[0] })
-        if res.status_code != 200:
-            raise RuntimeError(f'get_verification_code({args[0]}) failed.')
+        email = args[0]
+        data = {'email': email, 'valid_till': get_verification_code_valid_till()}
+        res = client.post(f'{base_url}/email/signup/verification/', data)
+        if res.status_code != status.HTTP_200_OK:
+            raise RuntimeError(f'get_verification_code({email}) failed. Status: {res.status_code}, Response: {res.json()}')
         return res.data['verification_code']
     return _email_verification_code
 
