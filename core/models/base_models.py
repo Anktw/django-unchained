@@ -12,7 +12,7 @@ class BaseModel(models.Model):
     updated_by = models.CharField(max_length=20, unique=False, null=False, blank=False, default='system')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    deleted_at = models.DateTimeField(unique=False)
+    deleted_at = models.DateTimeField(unique=False, null=True, blank=True)
 
 class UserManager(BaseUserManager):
     """
@@ -64,7 +64,7 @@ class BaseUserModel(AbstractUser):
     updated_by = models.CharField(max_length=20, unique=False, null=False, blank=False, default='system')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    deleted_at = models.DateTimeField(unique=False)
+    deleted_at = models.DateTimeField(unique=False, null=True, blank=True)
 
     objects = UserManager()
 

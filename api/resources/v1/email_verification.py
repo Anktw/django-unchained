@@ -28,7 +28,7 @@ class EmailVerificationCodeView(APIView):
                 f'Please take a second to finish your email verification '
                 f'and sign up from the following URL.\n{url}\n\n'
                 f'Note that the above verification link expires in '
-                f'{settings.EMAIL_VERIFICATION_CODE_LIFETIME_MINS} minutes.\n'
+                f'{settings.EMAIL_VERIFICATION_LIFETIME_MINS} minutes.\n'
                 f'If this was a mistake, the account will not be created.')
         email = EmailMessage(subject=subject, body=body, to=[email])
         email.send()

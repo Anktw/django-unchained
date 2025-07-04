@@ -46,7 +46,7 @@ class CustomClient(Client):
             extra['CONTENT_TYPE'] = content_type
             res = super().get(**args, **auth_header, **extra)
         elif method =='POST':
-            res = super().put(**args, **auth_header, **extra)
+            res = super().post(**args, **auth_header, **extra)
         elif method == 'PUT':
             res = super().put(**args, **auth_header, **extra)
         elif method == 'PATCH':

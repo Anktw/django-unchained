@@ -1,9 +1,11 @@
 from rest_framework import status
 from core import models
-
+from datetime import datetime, timedelta
+from django.conf import settings
+import pytz
 
 def is_ok(status_code):
-    return status_code in [status.HTTP_201_CREATED]
+    return status_code in [status.HTTP_201_CREATED, status.HTTP_200_OK]
 
 def default_password():
     return 'default'
@@ -59,5 +61,14 @@ def get_domain(pk=None, name=None):
         return models.Tenant.objects.get(pk=pk).domain
     return models.Tenant.objects.get(name=name).domain
 
-def get_tenant_user_od(tenant_id, user_id):
+def get_tenant_user_id(tenant_id, user_id):
     return models.TenantUser.objects.get(tenant_id=tenant_id, user_id=user_id).pk
+
+def get_verification_code_valid_till():
+    if not hasattr(settings, 'EMAIL_VERIFICATION_LIFETIME_MINS'):
+        lifetime_minutes = 60
+    else:
+        lifetime_minutes = settings.EMAIL_VERIFICATION_LIFETIME_MINS
+    now = datetime.now(pytz.utc)
+    future_time = now + timedelta(minutes=lifetime_minutes)
+    return future_time.isoformat()

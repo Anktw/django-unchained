@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
     'core.apps.CoreConfig',
@@ -253,8 +254,8 @@ SIMPLE_JWT = {
 }
 
 # Email
-EMAIL_VERIFICATION_CODE_LENGTH = env.int('EMAIL_VERIFICATION_CODE_LENGTH')
-EMAIL_VERIFICATION_CODE_LIFETIME_MINS = env.int('EMAIL_VERIFICATION_CODE_LIFETIME_MINS')
+EMAIL_VERIFICATION_LENGTH = env.int('EMAIL_VERIFICATION_LENGTH')
+EMAIL_VERIFICATION_LIFETIME_MINS = env.int('EMAIL_VERIFICATION_LIFETIME_MINS')
 
 EMAIL_BACKEND = env.str('EMAIL_BACKEND')
 EMAIL_HOST = env.str('EMAIL_HOST')

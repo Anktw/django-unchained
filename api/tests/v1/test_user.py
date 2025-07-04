@@ -6,18 +6,18 @@ from rest_framework import status
 
 from core import models
 from helpers.utils import *
-
+import datetime
 
 @pytest.mark.order(1)
 @pytest.mark.django_db
 @pytest.mark.usefixtures('django_db_setup')
 class TestUserSignUp:
   @pytest.mark.parametrize('req, expected', [
-    (dict(data=dict(email=email_from(1))), dict(status=200)),
+    (dict(data=dict(email=email_from(1), valid_till= get_verification_code_valid_till())), dict(status=200)),
   ])
   def test_email_verification(self, client, base_url, req, expected, settings):
     # Preprocess
-    model = models.EmailVerificationCode
+    model = models.EmailVerification
     n_data = model.objects.all().count()
 
     # Execution
@@ -38,7 +38,7 @@ class TestUserSignUp:
     assert query.count() > 0
     assert res.data['email'] == req['data']['email']
     assert len(res.data['verification_code']) > 0
-    assert len(res.data['verification_code']) == settings.EMAIL_VERIFICATION_CODE_LENGTH
+    assert len(res.data['verification_code']) == settings.EMAIL_VERIFICATION_LENGTH
 
   @pytest.mark.parametrize('req, expected', [
     (dict(seed=1, data=signup_data(seed=1)), dict(status=201)),

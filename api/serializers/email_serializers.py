@@ -23,11 +23,11 @@ class EmailVerificationSerializer(BaseModelSerializer):
         read_only_fields = ('valid_until',) + BaseModelSerializer.Meta.read_only_fields
 
 class VerifiedEmailSerializer(BaseSerializer):
-    verification_code = serializers.CharField(max_length=settings.EMAIL_VERIFICATION_CODE_LENGTH, write_only=True)
+    verification_code = serializers.CharField(max_length=settings.EMAIL_VERIFICATION_LENGTH, write_only=True)
     email = serializers.CharField(max_length=200, required=False)
 
     def validate(self, data):
-        if len(data['verification_code']) != settings.EMAIL_VERIFICATION_CODE_LENGTH:
+        if len(data['verification_code']) != settings.EMAIL_VERIFICATION_LENGTH:
             raise serializers.ValidationError('Invalid verification code.')
         query = models.EmailVerification.objects.filter(verification_code=data['verification_code'])
         if query.count() != 1:
