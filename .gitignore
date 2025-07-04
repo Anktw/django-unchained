@@ -15,3 +15,5 @@ __pycache__
 pytest.ini
 logs/application.log
 logs/errors.log
+/logs
+*.log
