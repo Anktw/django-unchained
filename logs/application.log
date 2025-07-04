@@ -236,3 +236,127 @@ Traceback (most recent call last):
   File "B:\Github\django-unchained\api\serializers\user_serializers.py", line 23, in create
     raise ValidationError('Invitation code or verification code is needed to create')
 rest_framework.exceptions.ValidationError: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-04 19:00:51,686 exception_handler 22804 3112 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-04 19:00:51,718 log 22804 3112 Internal Server Error: /api/v1/users/
+Traceback (most recent call last):
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Ankit\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 85, in inner
+    return func(*args, **kwds)
+  File "B:\Github\django-unchained\api\resources\v1\user.py", line 20, in post
+    user = serializer.save()
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "B:\Github\django-unchained\api\serializers\user_serializers.py", line 23, in create
+    raise ValidationError('Invitation code or verification code is needed to create')
+rest_framework.exceptions.ValidationError: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-04 19:05:02,767 exception_handler 21584 16292 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-04 19:05:02,790 log 21584 16292 Internal Server Error: /api/v1/users/
+Traceback (most recent call last):
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Ankit\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 85, in inner
+    return func(*args, **kwds)
+  File "B:\Github\django-unchained\api\resources\v1\user.py", line 20, in post
+    user = serializer.save()
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "B:\Github\django-unchained\api\serializers\user_serializers.py", line 23, in create
+    raise ValidationError('Invitation code or verification code is needed to create')
+rest_framework.exceptions.ValidationError: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-04 19:07:35,867 exception_handler 11984 19568 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-04 19:07:35,886 log 11984 19568 Internal Server Error: /api/v1/users/
+Traceback (most recent call last):
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Ankit\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 85, in inner
+    return func(*args, **kwds)
+  File "B:\Github\django-unchained\api\resources\v1\user.py", line 20, in post
+    user = serializer.save()
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "B:\Github\django-unchained\api\serializers\user_serializers.py", line 23, in create
+    raise ValidationError('Invitation code or verification code is needed to create')
+rest_framework.exceptions.ValidationError: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-04 19:10:41,068 exception_handler 24720 24024 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-04 19:10:41,091 log 24720 24024 Internal Server Error: /api/v1/users/
+Traceback (most recent call last):
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Ankit\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 85, in inner
+    return func(*args, **kwds)
+  File "B:\Github\django-unchained\api\resources\v1\user.py", line 20, in post
+    user = serializer.save()
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "B:\Github\django-unchained\api\serializers\user_serializers.py", line 23, in create
+    raise ValidationError('Invitation code or verification code is needed to create')
+rest_framework.exceptions.ValidationError: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
