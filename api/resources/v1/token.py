@@ -1,4 +1,5 @@
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework_simplejwt.views import TokenRefreshView
 from api import serializers
 from ipware import get_client_ip
 from rest_framework.views import APIView

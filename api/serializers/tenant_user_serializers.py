@@ -68,14 +68,14 @@ class TenantUserRoleTypeSerializer(BaseModelSerializer):
     def validate(self, data):
         admin_role_type = constants.TENANT_USER_ROLE_TYPE.ADMIN.value
 
-        if self.tenat_user.role_type != admin_role_type:
+        if self.tenant_user.role_type != admin_role_type:
             raise serializers.ValidationError('General user can not edit role type.')
 
-        if self.tenat_user.id == data['tenant_user_id']:
+        if self.tenant_user.id == data['tenant_user_id']:
             raise serializers.ValidationError('Can not edit self role type.')
         
         if data['role_type'] == constants.TENANT_USER_ROLE_TYPE.ADMIN.value:
-            query = models.TenantUser.objects.filter(tenant_id=self.tenat_user.tenant.id, role_type=constants.TENANT_USER_ROLE_TYPE.ADMIN.value)\
+            query = models.TenantUser.objects.filter(tenant_id=self.tenant_user.tenant.id, role_type=constants.TENANT_USER_ROLE_TYPE.ADMIN.value)\
                 .exclude(pk=data['tenant_user_id'])
             if query.count() == 0:
                 raise serializers.ValidationError('If the tenant user is assigned to general user, no admin user is in the tenant')

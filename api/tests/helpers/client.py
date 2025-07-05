@@ -44,15 +44,15 @@ class CustomClient(Client):
         if method == 'GET':
             args.pop('content_type')
             extra['CONTENT_TYPE'] = content_type
-            res = super().get(**args, **auth_header, **extra, raise_exception=False)
+            res = super().get(**args, **auth_header, **extra)
         elif method =='POST':
-            res = super().post(**args, **auth_header, **extra, raise_exception=False)
+            res = super().post(**args, **auth_header, **extra)
         elif method == 'PUT':
-            res = super().put(**args, **auth_header, **extra, raise_exception=False)
+            res = super().put(**args, **auth_header, **extra)
         elif method == 'PATCH':
-            res = super().patch(**args, **auth_header, **extra, raise_exception=False)
+            res = super().patch(**args, **auth_header, **extra)
         elif method == 'DELETE':
-            res = super().delete(**args, **auth_header, **extra, raise_exception=False)
+            res = super().delete(**args, **auth_header, **extra)
         else:
             raise ValueError(f'Unsupported HTTP request type:{method} is called.')
         return res

@@ -2,9 +2,12 @@ import pytest
 from pytest_django.lazy_django import skip_if_no_django
 from helpers.utils import *
 from django.core.management import call_command
-import os
 from django.db import connection
 from rest_framework import status
+
+import os, sys
+sys.path.append(os.path.join(os.path.dirname(__file__), 'helpers'))
+
 
 @pytest.fixture()
 def client():

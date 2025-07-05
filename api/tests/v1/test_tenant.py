@@ -80,102 +80,97 @@ class TestTenant:
         # if status is ok...
         assert res.data['name'] == tenant_name_from(req['data']['tenant_id'])
 
-        @pytest.mark.parametrize('req, expected',[
-            (dict(user_id=1, tenant_id=1, tgt_tenant_id=1, data=[dict(email=email_from(seed=2))]),
-            dict(status=200)),
-            (dict(user_id=1, tenant_id=1, tgt_tenant_id=2, data=[dict(email=email_from(seed=5))]),
-            dict(status=400)),
-        ])
-        def test_create_tenant_invitation_code(self, client, base_url, bearer_token, req, expected, settings):
-            # Preprocess
-            model = models.TenantInvitationCode
-            n_data = model.objects.all().count()
-            domain = get_domain(req['tgt_tenant_id'])
-            # Execution
-            req['data'][0]['tenant_user_id'] = get_tenant_user_id(tenant_id=req['tenant_id'], user_id=req['user_id'])
-            res = client.post(
-               f'{base_url}/tenants/{domain}/invitation-codes/', req['data'],
-                bearer_token=bearer_token(email_from(req['user_id'])),
-                check_auth_guard=is_ok(expected['status'])
-            )
-            assert res.status_code == expected['status']
-            # Common postprocess
-            query = model.objects.filter(email=req['data'][0]['email'])
-            # if status is error...
-            if not is_ok(res.status_code):
-                assert n_data == model.objects.all().count()
-                assert not query.exists()
-                return
-            # if status is ok...
-            assert n_data + 1 == model.objects.all().count()
-            assert query.exists()
-            assert len(query.get().invitation_code) == (settings.TENANT_INVITATION_CODE_LENGTH)
-            
-        @pytest.mark.parametrize('req, expected',[
-           (dict(user_id=3, tenant_id=1, data=dict(email=email_from(seed=2))),
-            dict(status=403)),
-            (dict(user_id=2, tenant_id=1, data=dict(email=email_from(seed=2))),
-            dict(status=200)),
-        ])
-        def test_retrieve_invited_tenant(self, client, base_url, bearer_token, req, expected):
-           # Preprocess
-           bearer_token = bearer_token(email_from(seed=req['user_id']))
-           email = seed=req['data']['email']
-           query = models.TenantInvitationCode.objects.filter(email=email)
-           req['data']['invitation_code'] = query.get().invitation_code
-           # Execution
-           res = client.post(
-               f'{base_url}/tenants/invited/', req['data'],
-                bearer_token=bearer_token,
-                check_auth_guard=is_ok(expected['status'])
-            )
-           assert res.status_code == expected['status']
-
-            # if status is error...
-           if not is_ok(res.status_code):
-              return
-           assert res.data['id'] == req['tenant_id']
-        @pytest.mark.parametrize('req, expected', [
-           (dict(user_id=2, tenant_id=3, user_id_to_get_invitation_code=2),
-            dict(status=400)),
-            (dict(user_id=5, tenant_id=1, user_id_to_get_invitation_code=2),
-            dict(status=500)),
-            (dict(user_id=2, tenant_id=1, user_id_to_get_invitation_code=2),
-            dict(status=201)),
-        ])
-        def test_create_tenant_user(self, client, base_url, bearer_token, req, expected):
-            # Preprocess
-            model = models.TenantUser
-            n_data = model.objects.all().count()
-            domain = get_domain(req['tenant_id'])
-            email = email_from(req['user_id_to_get_invitation_code'])
-            query = models.TenantInvitationCode.objects.filter(email=email)
-            invitation_code = query.get().invitation_code
-            req['data'] = dict(user_id=req['user_id'], invitation_code=invitation_code)
-
-            # Execution
-            res = client.post(
-            f'{base_url}/tenants/{domain}/users/', req['data'],
-                bearer_token=bearer_token(email_from(req['user_id'])),
-                check_auth_guard=is_ok(expected['status'])
-            )
-            assert res.status_code == expected['status']
-
-            # Common postprocess
-            query = model.objects.filter(
-                tenant_id=req['tenant_id'], user_id=req['data']['user_id'])
-
-            # if status is error...
-            if not is_ok(res.status_code):
-                assert n_data == model.objects.all().count()
-                assert not query.exists()
-                return
-
-            # if status is ok...
-            assert n_data + 1 == model.objects.all().count()
-            assert query.exists()
-            assert res.data['tenant']['id'] == req['tenant_id']
-            assert res.data['user']['id'] == req['data']['user_id']
+    @pytest.mark.parametrize('req, expected',[
+        (dict(user_id=1, tenant_id=1, tgt_tenant_id=1, data=[dict(email=email_from(seed=2))]),
+        dict(status=200)),
+        (dict(user_id=1, tenant_id=1, tgt_tenant_id=2, data=[dict(email=email_from(seed=5))]),
+        dict(status=400)),
+    ])
+    def test_create_tenant_invitation_code(self, client, base_url, bearer_token, req, expected, settings):
+        # Preprocess
+        model = models.TenantInvitationCode
+        n_data = model.objects.all().count()
+        domain = get_domain(req['tgt_tenant_id'])
+        # Execution
+        req['data'][0]['tenant_user_id'] = get_tenant_user_id(tenant_id=req['tenant_id'], user_id=req['user_id'])
+        res = client.post(
+           f'{base_url}/tenants/{domain}/invitation-codes/', req['data'],
+            bearer_token=bearer_token(email_from(req['user_id'])),
+            check_auth_guard=is_ok(expected['status'])
+        )
+        assert res.status_code == expected['status']
+        # Common postprocess
+        query = model.objects.filter(email=req['data'][0]['email'])
+        # if status is error...
+        if not is_ok(res.status_code):
+            assert n_data == model.objects.all().count()
+            assert not query.exists()
+            return
+        # if status is ok...
+        assert n_data + 1 == model.objects.all().count()
+        assert query.exists()
+        assert len(query.get().invitation_code) == (settings.TENANT_INVITATION_CODE_LENGTH)
+        
+    @pytest.mark.parametrize('req, expected',[
+       (dict(user_id=3, tenant_id=1, data=dict(email=email_from(seed=2))),
+        dict(status=403)),
+        (dict(user_id=2, tenant_id=1, data=dict(email=email_from(seed=2))),
+        dict(status=200)),
+    ])
+    def test_retrieve_invited_tenant(self, client, base_url, bearer_token, req, expected):
+       # Preprocess
+       bearer_token = bearer_token(email_from(seed=req['user_id']))
+       email = seed=req['data']['email']
+       query = models.TenantInvitationCode.objects.filter(email=email)
+       req['data']['invitation_code'] = query.get().invitation_code
+       # Execution
+       res = client.post(
+           f'{base_url}/tenants/invited/', req['data'],
+            bearer_token=bearer_token,
+            check_auth_guard=is_ok(expected['status'])
+        )
+       assert res.status_code == expected['status']
+        # if status is error...
+       if not is_ok(res.status_code):
+          return
+       assert res.data['id'] == req['tenant_id']
+    @pytest.mark.parametrize('req, expected', [
+       (dict(user_id=2, tenant_id=3, user_id_to_get_invitation_code=2),
+        dict(status=400)),
+        (dict(user_id=5, tenant_id=1, user_id_to_get_invitation_code=2),
+        dict(status=500)),
+        (dict(user_id=2, tenant_id=1, user_id_to_get_invitation_code=2),
+        dict(status=201)),
+    ])
+    def test_create_tenant_user(self, client, base_url, bearer_token, req, expected):
+        # Preprocess
+        model = models.TenantUser
+        n_data = model.objects.all().count()
+        domain = get_domain(req['tenant_id'])
+        email = email_from(req['user_id_to_get_invitation_code'])
+        query = models.TenantInvitationCode.objects.filter(email=email)
+        invitation_code = query.get().invitation_code
+        req['data'] = dict(user_id=req['user_id'], invitation_code=invitation_code)
+        # Execution
+        res = client.post(
+        f'{base_url}/tenants/{domain}/users/', req['data'],
+            bearer_token=bearer_token(email_from(req['user_id'])),
+            check_auth_guard=is_ok(expected['status'])
+        )
+        assert res.status_code == expected['status']
+        # Common postprocess
+        query = model.objects.filter(
+            tenant_id=req['tenant_id'], user_id=req['data']['user_id'])
+        # if status is error...
+        if not is_ok(res.status_code):
+            assert n_data == model.objects.all().count()
+            assert not query.exists()
+            return
+        # if status is ok...
+        assert n_data + 1 == model.objects.all().count()
+        assert query.exists()
+        assert res.data['tenant']['id'] == req['tenant_id']
+        assert res.data['user']['id'] == req['data']['user_id']
 
     @pytest.mark.parametrize('req, expected', [
         (dict(user_id=1, tenant_id=1, tgt_tenant_user_id=1), dict(status=200)),

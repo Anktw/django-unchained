@@ -32,7 +32,7 @@ class BaseModelSerializer(serializers.ModelSerializer):
                 data.update(extra_request)
         super().__init__(instance=instance, data=data, **kwargs)
         self.tenant=tenant
-        self.tenat_user=tenant_user
+        self.tenant_user=tenant_user
         self.user=user
 
     def create(self, validated_data):
@@ -45,8 +45,8 @@ class BaseModelSerializer(serializers.ModelSerializer):
     
     def _get_creator(self):
         creator= constants.BUILTIN_USER.SYSTEM.value
-        if self.tenat_user is not None:
-            creator = str(self.tenat_user.user.id)
+        if self.tenant_user is not None:
+            creator = str(self.tenant_user.user.id)
         elif self.user is not None:
             creator = (constants.BUILTIN_USER.ANONYMOUS.value
                        if self.user.id is None else str(self.user.id))
@@ -54,18 +54,18 @@ class BaseModelSerializer(serializers.ModelSerializer):
     
     def _get_updater(self):
         updater = constants.BUILTIN_USER.SYSTEM.value
-        if self.tenat_user is not None:
-            updater = str(self.tenat_user.user.id)
+        if self.tenant_user is not None:
+            updater = str(self.tenant_user.user.id)
         elif self.user is not None:
             updater = (constants.BUILTIN_USER.ANONYMOUS.value
                        if self.user.id is None else str(self.user.id)) 
         return updater
     
-    def creatorstamp(self, validated_date):
+    def creatorstamp(self, validated_data):
         creator = self._get_creator()
-        validated_date['created_by'] = creator
-        validated_date['updated_by'] = creator
-        return validated_date
+        validated_data['created_by'] = creator
+        validated_data['updated_by'] = creator
+        return validated_data
     
     def updaterstamp(self, validated_data):
         updater = self._get_updater()
@@ -101,7 +101,7 @@ class DefaultListSerializer(serializers.ListSerializer):
     def validate(self, data):
         if len(data) > 20:
             raise exceptions.RequestSizeError('Request list size must be <= 20.')
-        return super().validate(data)
+        return data
 
 class StringListField(serializers.ListField):
     child = serializers.CharField(max_length=100)

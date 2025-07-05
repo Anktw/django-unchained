@@ -47,7 +47,7 @@ def login_data(seed, overwrite=dict()):
         'email': email_from(seed),
         'password': default_password(),
     }
-    ret.update()
+    ret.update(overwrite)
     return ret
 
 def tenant_name_from(seed, as_dict=False):
