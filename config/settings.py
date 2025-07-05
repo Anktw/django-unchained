@@ -37,6 +37,10 @@ DEBUG = env.bool('DEBUG', default=False)
 
 ALLOWED_HOSTS = env.tuple('ALLOWED_HOSTS', default=('localhost', '0.0.0.0'))
 
+# Add testserver to ALLOWED_HOSTS when running tests
+if TEST:
+    ALLOWED_HOSTS = list(ALLOWED_HOSTS) + ['testserver']
+
 CORS_ORIGIN_ALLOW_ALL = env.bool('CORS_ORIGIN_ALLOW_ALL', default=False)
 CORS_ORIGIN_WHITELIST = env.tuple('CORS_ORIGIN_WHITELIST', default=('https://localhost:8000', 'https://0.0.0.0:8000',))
 

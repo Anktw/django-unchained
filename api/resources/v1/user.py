@@ -68,6 +68,10 @@ class UserPasswordView(APIView):
 class UserTenantListView(APIView):
     @user_data_api
     def get(self, request, user_id):
-        query = models.TenantUser.objects.filter(user_id=request.user.id)
-        serializer = serializers.TenantSerializer(query.all(), many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        # Get the tenants that the user belongs to
+        tenant_user_query = models.TenantUser.objects.filter(user_id=request.user.id)
+        tenant_ids = tenant_user_query.values_list('tenant_id', flat=True)
+        tenants = models.Tenant.objects.filter(id__in=tenant_ids)
+        
+        serializer = serializers.TenantSerializer(tenants, many=True)
+        return Response({'tenants': serializer.data}, status=status.HTTP_200_OK)

@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 class TenantInvitationCodeListSerializer(serializers.ListSerializer):
     def validate(self, data):
-        if len(data) > settings.TENANT_INVITATION_CODE_MAX_SIZE:
+        if len(data) > settings.TENANT_INVITATION_CODE_REQUEST_MAX_SIZE:
             raise exceptions.RequestSizeError('List size must be <= 'f'{settings.TENANT_INVITATION_CODE_REQUEST_MAX_SIZE}.')
         
         if len(set([d['tenant_id'] for d in data])) > 1:
@@ -35,7 +35,7 @@ class TenantInvitationCodeSerializer(BaseModelSerializer):
     class Meta(BaseModelSerializer.Meta):
         list_serializer_class=TenantInvitationCodeListSerializer
         model = models.TenantInvitationCode
-        read_only_fields = ('invitation_code', 'valid_until',) + BaseModelSerializer.Meta.read_only_fields
+        read_only_fields = ('invitation_code', 'valid_till',) + BaseModelSerializer.Meta.read_only_fields
 
     def create(self, validated_data):
         validated_data = self.creatorstamp(validated_data)
@@ -60,16 +60,17 @@ class InvitedTenantSerializer(BaseModelSerializer):
     invitation_code = serializers.CharField(max_length=settings.TENANT_INVITATION_CODE_LENGTH)
     tenant = TenantSerializer(required=False, read_only=True)
 
-    class Meta(BaseModelSerializer.Meta):
+    class Meta:
         model = models.TenantInvitationCode
-        read_only_fields = (('tenant', 'tenant_user', 'valid_until',) + BaseModelSerializer.Meta.read_only_fields)
+        fields = ('invitation_code', 'tenant')
+        read_only_fields = ('tenant',)
 
-        def validate(self, data):
-            if len(data['invitation_code']) != settings.TENANT_INVITATION_CODE_LENGTH:
-                raise serializers.ValidationError('Invalid tenant invitation code.')
+    def validate(self, data):
+        if len(data['invitation_code']) != settings.TENANT_INVITATION_CODE_LENGTH:
+            raise serializers.ValidationError('Invalid tenant invitation code.')
 
-            query = models.TenantInvitationCode.objects.filter(invitation_code=data['invitation_code'])
-            if not query.exists():
-                raise serializers.ValidationError('Invalid tenant invitation code.')
+        query = models.TenantInvitationCode.objects.filter(invitation_code=data['invitation_code'])
+        if not query.exists():
+            raise serializers.ValidationError('Invalid tenant invitation code.')
 
-            return data
+        return data

@@ -58,9 +58,10 @@ class TestUserSignUp:
 
         # Execution
         if is_expected_validation_error:
+            client.set_expect_validation_error(True)
             with pytest.raises(ValidationError) as excinfo:
                 client.post(f'{base_url}/users/', req['data'])
-                assert 'Invitation code or verification code is needed to create' in str(excinfo.value)
+            assert 'Invitation code or verification code is needed to create' in str(excinfo.value)
             return
         else:
             res = client.post(f'{base_url}/users/', req['data'])

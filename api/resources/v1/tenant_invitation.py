@@ -99,7 +99,15 @@ class InvitedTenantView(APIView):
     permission_classes = (AllowAny,)
 
     def post(self, request):
-        serializer = serializers.InvitedTenantSerializer(data=request.data, user=request.user)
+        serializer = serializers.InvitedTenantSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        
+        # Get the invitation code from validated data
+        invitation_code = serializer.validated_data['invitation_code']
+        
+        # Find the existing invitation code record
+        invitation = models.TenantInvitationCode.objects.get(invitation_code=invitation_code)
+        
+        # Return the tenant information
+        tenant_serializer = serializers.TenantSerializer(invitation.tenant_user.tenant)
+        return Response(tenant_serializer.data, status=status.HTTP_200_OK)

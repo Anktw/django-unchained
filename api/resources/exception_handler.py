@@ -73,33 +73,38 @@ def get_status_code(exc):
 
 def custom_exception_handler(exc, context):
     response = exception_handler(exc, context)
-    msg = {'exc': {exc}, 'view': context['view'] if 'view' in context else None, }
+
     logger.error(f'{type(exc)}: {exc}')
-    get_status_code(exc)
+    status_code = get_status_code(exc)
+
     data = {
         'type': str(type(exc)),
-        'action': str(context['view']),
+        'action': str(context.get("view", None)),
         'messages': [str(exc)],
-        'status': get_status_code(exc),
+        'status': status_code,
         'error': True,
     }
-    if (response is None) or (not isinstance(response, Response)):
-        response = Response(data, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    # If DRF's exception_handler didn't return a Response
+    if response is None or not isinstance(response, Response):
+        response = Response(data, status=status_code)
         logger.error(f'Response data: {response.data}')
         return response
-    
-    if isinstance(exc.detail, dict):
-        if isinstance(exc, drf.exceptions.ValidationError):
+
+    # Handle ValidationError / APIError with details
+    if hasattr(exc, 'detail'):
+        if isinstance(exc.detail, dict):
             messages = []
             for key, value in exc.detail.items():
                 if key == api_settings.NON_FIELD_ERRORS_KEY:
                     messages.append(' '.join(value))
                 else:
                     messages.append(f'{key}: {" ".join(value)}')
-                data['messages'] = messages
+            data['messages'] = messages
         elif isinstance(exc.detail, list):
             data['messages'] = exc.detail
         else:
             data['messages'] = [exc.detail]
-        logger.error(f'Response data: {response.data}')
-        return Response(data, status=data['status'])
+
+    logger.error(f'Response data: {data}')
+    return Response(data, status=status_code)
