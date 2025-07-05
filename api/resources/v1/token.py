@@ -16,7 +16,7 @@ class CustomTokenObtainPairView(TokenObtainPairView):
         class Request:
             data=dict()
         
-        ip_address = get_client_ip(request)
+        ip_address, is_routable = get_client_ip(request)
         request_ = Request()
         request_.data = {**dict(request.data), 'ip_address': ip_address,}
         return super().post(request_, *args, **kwargs)

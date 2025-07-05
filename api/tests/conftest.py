@@ -46,7 +46,7 @@ def token(django_db_setup, client, base_url):
         if 'access' not in res.data:
             raise RuntimeError(f'Access token not found in response.')
         return res.data['access']
-    return token
+    return _token
 
 @pytest.fixture(scope='function')
 def bearer_token(token):

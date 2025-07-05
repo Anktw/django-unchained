@@ -8,7 +8,7 @@ def is_ok(status_code):
     return status_code in [status.HTTP_201_CREATED, status.HTTP_200_OK]
 
 def default_password():
-    return 'default'
+    return 'testtest'
 
 def first_name_from(seed, as_dict=False):
     ret = f'F{str(seed).zfill(3)}'
