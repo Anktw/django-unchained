@@ -94,7 +94,7 @@ def tenant_admin_api(wrapped_func):
 
 
 def tenant_api(wrapped_func):
-    def tenant_api_impl(*args, kwargs):
+    def tenant_api_impl(*args, **kwargs):
         ret = {'action': wrapped_func.__name__, }
         tenant = get_tenant_from_domain(**kwargs)
         serializer = serializers.TenantSerializer(tenant)

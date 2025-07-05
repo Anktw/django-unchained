@@ -13,8 +13,12 @@ class PasswordResetCodeSerializer(BaseModelSerializer):
         read_only_fields = (('reset_code', 'valid_until',) + BaseModelSerializer.Meta.read_only_fields)
 
     def create(self, validated_data):
-        validated_data = self.creatorstamp(validated_data)
-        password_reset_code = models.PasswordReset(**validated_data)
+        user = models.User.objects.filter(email=validated_data['email']).first()
+        if not user:
+            raise exceptions.EmailNotRegistered(f'{validated_data["email"]} is not signed up.')
+
+        validated_data['user'] = user
+        password_reset_code = models.PasswordReset.objects.create(**validated_data)
         password_reset_code.set_reset()
         password_reset_code.save()
         return password_reset_code

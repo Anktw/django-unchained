@@ -244,7 +244,7 @@ class TestPasswordReset:
     ])
     def test_create_password_reset_code(self, client, base_url, req, expected):
         # Preprocess
-        model = models.PasswordResetCode
+        model = models.PasswordReset
         n_data = model.objects.all().count()
         # Execution
         res = client.post(f'{base_url}/password/reset-code/', req['data'])
@@ -271,7 +271,7 @@ class TestPasswordReset:
     ])
     def test_reset_password(self, client, base_url, req, expected):
         # Preprocess
-        model = models.PasswordResetCode
+        model = models.PasswordReset
         query = model.objects.filter(email=req['email_to_get_reset_code'])
         reset_code = query.get().reset_code
         n_data = model.objects.all().count()

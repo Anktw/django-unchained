@@ -33,8 +33,8 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         
         access_expires_in = settings.SIMPLE_JWT['ACCESS_TOKEN_LIFETIME'].total_seconds()
         refresh_expires_in = settings.SIMPLE_JWT['REFRESH_TOKEN_LIFETIME'].total_seconds()
-        data['access_expires_in'] = int(access_expires_in)
-        data['refresh_expires_in'] = int(refresh_expires_in)
+        data_tokens['access_expires_in'] = int(access_expires_in)
+        data_tokens['refresh_expires_in'] = int(refresh_expires_in)
 
         return data_tokens
     
