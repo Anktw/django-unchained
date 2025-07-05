@@ -32,3 +32,45 @@ ERROR 2025-07-04 19:10:41,068 exception_handler 24720 24024 <class 'rest_framewo
 ERROR 2025-07-04 19:31:54,738 exception_handler 23248 26396 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
 ERROR 2025-07-04 19:31:55,458 exception_handler 23248 26396 <class 'rest_framework.exceptions.ValidationError'>: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
 ERROR 2025-07-04 19:31:55,464 exception_handler 23248 26396 Response data: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-04 19:54:38,671 exception_handler 17272 22680 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-04 19:54:39,264 exception_handler 17272 22680 <class 'rest_framework.exceptions.ValidationError'>: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-04 19:54:39,264 exception_handler 17272 22680 Response data: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:00:43,958 exception_handler 36212 34176 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:00:44,658 exception_handler 36212 34176 <class 'rest_framework.exceptions.ValidationError'>: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:00:44,659 exception_handler 36212 34176 Response data: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:03:52,840 exception_handler 25412 27092 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:03:53,531 exception_handler 25412 27092 <class 'rest_framework.exceptions.ValidationError'>: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:03:53,532 exception_handler 25412 27092 Response data: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:06:50,286 exception_handler 32140 15364 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:06:50,909 exception_handler 32140 15364 <class 'rest_framework.exceptions.ValidationError'>: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:06:50,909 exception_handler 32140 15364 Response data: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:07:54,721 exception_handler 36060 9816 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:07:55,340 exception_handler 36060 9816 <class 'rest_framework.exceptions.ValidationError'>: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:07:55,340 exception_handler 36060 9816 Response data: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:10:22,075 exception_handler 10572 26528 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:10:22,703 exception_handler 10572 26528 <class 'rest_framework.exceptions.ValidationError'>: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:10:22,704 exception_handler 10572 26528 Response data: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:17:13,940 exception_handler 34132 16552 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:17:14,561 exception_handler 34132 16552 <class 'rest_framework.exceptions.ValidationError'>: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:17:14,561 exception_handler 34132 16552 Response data: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:19:03,631 exception_handler 33988 7180 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:19:04,311 exception_handler 33988 7180 <class 'rest_framework.exceptions.ValidationError'>: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:19:04,311 exception_handler 33988 7180 Response data: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:20:08,305 exception_handler 9424 23932 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:20:08,884 exception_handler 9424 23932 <class 'rest_framework.exceptions.ValidationError'>: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:20:08,885 exception_handler 9424 23932 Response data: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:20:46,154 exception_handler 4544 36536 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:20:46,853 exception_handler 4544 36536 <class 'rest_framework.exceptions.ValidationError'>: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:20:46,853 exception_handler 4544 36536 Response data: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:23:00,059 exception_handler 27316 18856 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:23:00,748 exception_handler 27316 18856 <class 'rest_framework.exceptions.ValidationError'>: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:23:00,748 exception_handler 27316 18856 Response data: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:23:49,478 exception_handler 36756 37400 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:23:50,113 exception_handler 36756 37400 <class 'rest_framework.exceptions.ValidationError'>: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:23:50,113 exception_handler 36756 37400 Response data: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:24:29,850 exception_handler 37676 34852 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:24:30,582 exception_handler 37676 34852 <class 'rest_framework.exceptions.ValidationError'>: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:24:30,583 exception_handler 37676 34852 Response data: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:27:43,190 exception_handler 3396 18836 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:27:43,782 exception_handler 3396 18836 <class 'rest_framework.exceptions.ValidationError'>: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:27:43,782 exception_handler 3396 18836 Response data: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}

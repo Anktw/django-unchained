@@ -245,7 +245,6 @@ class TestPasswordReset:
         # Preprocess
         model = models.PasswordResetCode
         n_data = model.objects.all().count()
-
         # Execution
         res = client.post(f'{base_url}/password/reset-code/', req['data'])
         assert res.status_code == expected['status']

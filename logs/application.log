@@ -1,0 +1,476 @@
+ERROR 2025-07-04 19:54:38,671 exception_handler 17272 22680 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-04 19:54:38,700 log 17272 22680 Internal Server Error: /api/v1/users/
+Traceback (most recent call last):
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Ankit\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 85, in inner
+    return func(*args, **kwds)
+  File "B:\Github\django-unchained\api\resources\v1\user.py", line 20, in post
+    user = serializer.save()
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "B:\Github\django-unchained\api\serializers\user_serializers.py", line 23, in create
+    raise ValidationError('Invitation code or verification code is needed to create')
+rest_framework.exceptions.ValidationError: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-04 19:54:39,264 exception_handler 17272 22680 <class 'rest_framework.exceptions.ValidationError'>: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-04 19:54:39,264 exception_handler 17272 22680 Response data: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+WARNING 2025-07-04 19:54:39,264 log 17272 22680 Bad Request: /api/v1/users/
+ERROR 2025-07-05 12:00:43,958 exception_handler 36212 34176 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:00:43,996 log 36212 34176 Internal Server Error: /api/v1/users/
+Traceback (most recent call last):
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Ankit\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 85, in inner
+    return func(*args, **kwds)
+  File "B:\Github\django-unchained\api\resources\v1\user.py", line 20, in post
+    user = serializer.save()
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "B:\Github\django-unchained\api\serializers\user_serializers.py", line 23, in create
+    raise ValidationError('Invitation code or verification code is needed to create')
+rest_framework.exceptions.ValidationError: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:00:44,658 exception_handler 36212 34176 <class 'rest_framework.exceptions.ValidationError'>: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:00:44,659 exception_handler 36212 34176 Response data: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+WARNING 2025-07-05 12:00:44,659 log 36212 34176 Bad Request: /api/v1/users/
+ERROR 2025-07-05 12:03:52,840 exception_handler 25412 27092 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:03:52,875 log 25412 27092 Internal Server Error: /api/v1/users/
+Traceback (most recent call last):
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Ankit\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 85, in inner
+    return func(*args, **kwds)
+  File "B:\Github\django-unchained\api\resources\v1\user.py", line 20, in post
+    user = serializer.save()
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "B:\Github\django-unchained\api\serializers\user_serializers.py", line 23, in create
+    raise ValidationError('Invitation code or verification code is needed to create')
+rest_framework.exceptions.ValidationError: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:03:53,531 exception_handler 25412 27092 <class 'rest_framework.exceptions.ValidationError'>: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:03:53,532 exception_handler 25412 27092 Response data: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+WARNING 2025-07-05 12:03:53,532 log 25412 27092 Bad Request: /api/v1/users/
+ERROR 2025-07-05 12:06:50,286 exception_handler 32140 15364 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:06:50,318 log 32140 15364 Internal Server Error: /api/v1/users/
+Traceback (most recent call last):
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Ankit\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 85, in inner
+    return func(*args, **kwds)
+  File "B:\Github\django-unchained\api\resources\v1\user.py", line 20, in post
+    user = serializer.save()
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "B:\Github\django-unchained\api\serializers\user_serializers.py", line 23, in create
+    raise ValidationError('Invitation code or verification code is needed to create')
+rest_framework.exceptions.ValidationError: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:06:50,909 exception_handler 32140 15364 <class 'rest_framework.exceptions.ValidationError'>: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:06:50,909 exception_handler 32140 15364 Response data: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+WARNING 2025-07-05 12:06:50,910 log 32140 15364 Bad Request: /api/v1/users/
+ERROR 2025-07-05 12:07:54,721 exception_handler 36060 9816 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:07:54,742 log 36060 9816 Internal Server Error: /api/v1/users/
+Traceback (most recent call last):
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Ankit\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 85, in inner
+    return func(*args, **kwds)
+  File "B:\Github\django-unchained\api\resources\v1\user.py", line 20, in post
+    user = serializer.save()
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "B:\Github\django-unchained\api\serializers\user_serializers.py", line 23, in create
+    raise ValidationError('Invitation code or verification code is needed to create')
+rest_framework.exceptions.ValidationError: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:07:55,340 exception_handler 36060 9816 <class 'rest_framework.exceptions.ValidationError'>: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:07:55,340 exception_handler 36060 9816 Response data: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+WARNING 2025-07-05 12:07:55,340 log 36060 9816 Bad Request: /api/v1/users/
+ERROR 2025-07-05 12:10:22,075 exception_handler 10572 26528 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:10:22,098 log 10572 26528 Internal Server Error: /api/v1/users/
+Traceback (most recent call last):
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Ankit\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 85, in inner
+    return func(*args, **kwds)
+  File "B:\Github\django-unchained\api\resources\v1\user.py", line 20, in post
+    user = serializer.save()
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "B:\Github\django-unchained\api\serializers\user_serializers.py", line 23, in create
+    raise ValidationError('Invitation code or verification code is needed to create')
+rest_framework.exceptions.ValidationError: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:10:22,703 exception_handler 10572 26528 <class 'rest_framework.exceptions.ValidationError'>: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:10:22,704 exception_handler 10572 26528 Response data: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+WARNING 2025-07-05 12:10:22,704 log 10572 26528 Bad Request: /api/v1/users/
+ERROR 2025-07-05 12:17:13,940 exception_handler 34132 16552 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:17:13,975 log 34132 16552 Internal Server Error: /api/v1/users/
+Traceback (most recent call last):
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Ankit\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 85, in inner
+    return func(*args, **kwds)
+  File "B:\Github\django-unchained\api\resources\v1\user.py", line 20, in post
+    user = serializer.save()
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "B:\Github\django-unchained\api\serializers\user_serializers.py", line 23, in create
+    raise ValidationError('Invitation code or verification code is needed to create')
+rest_framework.exceptions.ValidationError: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:17:14,561 exception_handler 34132 16552 <class 'rest_framework.exceptions.ValidationError'>: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:17:14,561 exception_handler 34132 16552 Response data: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+WARNING 2025-07-05 12:17:14,561 log 34132 16552 Bad Request: /api/v1/users/
+ERROR 2025-07-05 12:19:03,631 exception_handler 33988 7180 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:19:03,668 log 33988 7180 Internal Server Error: /api/v1/users/
+Traceback (most recent call last):
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Ankit\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 85, in inner
+    return func(*args, **kwds)
+  File "B:\Github\django-unchained\api\resources\v1\user.py", line 20, in post
+    user = serializer.save()
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "B:\Github\django-unchained\api\serializers\user_serializers.py", line 23, in create
+    raise ValidationError('Invitation code or verification code is needed to create')
+rest_framework.exceptions.ValidationError: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:19:04,311 exception_handler 33988 7180 <class 'rest_framework.exceptions.ValidationError'>: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:19:04,311 exception_handler 33988 7180 Response data: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+WARNING 2025-07-05 12:19:04,312 log 33988 7180 Bad Request: /api/v1/users/
+ERROR 2025-07-05 12:20:08,305 exception_handler 9424 23932 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:20:08,333 log 9424 23932 Internal Server Error: /api/v1/users/
+Traceback (most recent call last):
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Ankit\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 85, in inner
+    return func(*args, **kwds)
+  File "B:\Github\django-unchained\api\resources\v1\user.py", line 20, in post
+    user = serializer.save()
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "B:\Github\django-unchained\api\serializers\user_serializers.py", line 23, in create
+    raise ValidationError('Invitation code or verification code is needed to create')
+rest_framework.exceptions.ValidationError: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:20:08,884 exception_handler 9424 23932 <class 'rest_framework.exceptions.ValidationError'>: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:20:08,885 exception_handler 9424 23932 Response data: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+WARNING 2025-07-05 12:20:08,885 log 9424 23932 Bad Request: /api/v1/users/
+ERROR 2025-07-05 12:20:46,154 exception_handler 4544 36536 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:20:46,181 log 4544 36536 Internal Server Error: /api/v1/users/
+Traceback (most recent call last):
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Ankit\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 85, in inner
+    return func(*args, **kwds)
+  File "B:\Github\django-unchained\api\resources\v1\user.py", line 20, in post
+    user = serializer.save()
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "B:\Github\django-unchained\api\serializers\user_serializers.py", line 23, in create
+    raise ValidationError('Invitation code or verification code is needed to create')
+rest_framework.exceptions.ValidationError: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:20:46,853 exception_handler 4544 36536 <class 'rest_framework.exceptions.ValidationError'>: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:20:46,853 exception_handler 4544 36536 Response data: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+WARNING 2025-07-05 12:20:46,853 log 4544 36536 Bad Request: /api/v1/users/
+ERROR 2025-07-05 12:23:00,059 exception_handler 27316 18856 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:23:00,092 log 27316 18856 Internal Server Error: /api/v1/users/
+Traceback (most recent call last):
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Ankit\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 85, in inner
+    return func(*args, **kwds)
+  File "B:\Github\django-unchained\api\resources\v1\user.py", line 20, in post
+    user = serializer.save()
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "B:\Github\django-unchained\api\serializers\user_serializers.py", line 23, in create
+    raise ValidationError('Invitation code or verification code is needed to create')
+rest_framework.exceptions.ValidationError: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:23:00,748 exception_handler 27316 18856 <class 'rest_framework.exceptions.ValidationError'>: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:23:00,748 exception_handler 27316 18856 Response data: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+WARNING 2025-07-05 12:23:00,748 log 27316 18856 Bad Request: /api/v1/users/
+ERROR 2025-07-05 12:23:49,478 exception_handler 36756 37400 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:23:49,508 log 36756 37400 Internal Server Error: /api/v1/users/
+Traceback (most recent call last):
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Ankit\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 85, in inner
+    return func(*args, **kwds)
+  File "B:\Github\django-unchained\api\resources\v1\user.py", line 20, in post
+    user = serializer.save()
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "B:\Github\django-unchained\api\serializers\user_serializers.py", line 23, in create
+    raise ValidationError('Invitation code or verification code is needed to create')
+rest_framework.exceptions.ValidationError: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:23:50,113 exception_handler 36756 37400 <class 'rest_framework.exceptions.ValidationError'>: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:23:50,113 exception_handler 36756 37400 Response data: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+WARNING 2025-07-05 12:23:50,113 log 36756 37400 Bad Request: /api/v1/users/
+ERROR 2025-07-05 12:24:29,850 exception_handler 37676 34852 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:24:29,889 log 37676 34852 Internal Server Error: /api/v1/users/
+Traceback (most recent call last):
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Ankit\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 85, in inner
+    return func(*args, **kwds)
+  File "B:\Github\django-unchained\api\resources\v1\user.py", line 20, in post
+    user = serializer.save()
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "B:\Github\django-unchained\api\serializers\user_serializers.py", line 23, in create
+    raise ValidationError('Invitation code or verification code is needed to create')
+rest_framework.exceptions.ValidationError: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:24:30,582 exception_handler 37676 34852 <class 'rest_framework.exceptions.ValidationError'>: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:24:30,583 exception_handler 37676 34852 Response data: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+WARNING 2025-07-05 12:24:30,583 log 37676 34852 Bad Request: /api/v1/users/
+ERROR 2025-07-05 12:27:43,190 exception_handler 3396 18836 <class 'rest_framework.exceptions.ValidationError'>: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:27:43,224 log 3396 18836 Internal Server Error: /api/v1/users/
+Traceback (most recent call last):
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Ankit\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 85, in inner
+    return func(*args, **kwds)
+  File "B:\Github\django-unchained\api\resources\v1\user.py", line 20, in post
+    user = serializer.save()
+  File "B:\Github\django-unchained\.venv\Lib\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "B:\Github\django-unchained\api\serializers\user_serializers.py", line 23, in create
+    raise ValidationError('Invitation code or verification code is needed to create')
+rest_framework.exceptions.ValidationError: [ErrorDetail(string='Invitation code or verification code is needed to create', code='invalid')]
+ERROR 2025-07-05 12:27:43,782 exception_handler 3396 18836 <class 'rest_framework.exceptions.ValidationError'>: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+ERROR 2025-07-05 12:27:43,782 exception_handler 3396 18836 Response data: {'email': [ErrorDetail(string='user with this email already exists.', code='unique')]}
+WARNING 2025-07-05 12:27:43,782 log 3396 18836 Bad Request: /api/v1/users/
