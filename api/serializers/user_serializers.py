@@ -37,6 +37,10 @@ class NewUserSerializer(BaseModelSerializer):
             invitation_code = models.TenantInvitationCode.objects.get(email= data['email'], invitation_code = data['invitation_code'])
             if utils.get_utc_now() > invitation_code.valid_till:
                 raise exceptions.EmailVerificationCodeExpired()
+        if 'verification_code' in data:
+            verification_code = models.EmailVerification.objects.get(email=data['email'], verification_code=data['verification_code'])
+            if utils.get_utc_now() > verification_code.valid_till:
+                raise exceptions.EmailVerificationCodeExpired()
         data = self.set_blank_explicitly(data, fields=['groups', 'user_permissions'])
 
         return super().validate(data)

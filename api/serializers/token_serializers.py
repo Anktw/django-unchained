@@ -11,7 +11,7 @@ import datetime
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     username_field = models.User.EMAIL_FIELD
-    ip_address = serializers.CharField()
+    ip_address = serializers.CharField(write_only=True, required=False)
     
     @classmethod
     def get_token(cls, user):
@@ -36,7 +36,7 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         data['access_expires_in'] = int(access_expires_in)
         data['refresh_expires_in'] = int(refresh_expires_in)
 
-        return data
+        return data_tokens
     
     def record_failed_login_attempt(self, data):
         serializer = FailedLoginAttemptSerializer(data=data)
@@ -56,8 +56,7 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
 class CustomTokenRefreshSerializer(TokenRefreshSerializer):
     @classmethod
     def get_token(cls, user):
-        token = super().get_token(user)
-        return token
+        return super().get_token(user)
     
     def validate(self, data):
         data = super().validate(data)
