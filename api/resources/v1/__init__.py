@@ -2,7 +2,7 @@ from .token import (CustomTokenObtainPairView, CustomTokenRefreshView, CustomTok
 from .user import (UserListView, UserView, UserPasswordView, UserTenantListView)
 from .email_verification import (EmailVerificationCodeView, EmailMessage)
 from .password_reset import (PasswordResetEmailView, PasswordResetView)
-from .password_reset_code import (PasswordResetCodeView)
+from .password_reset import (PasswordResetCodeView)
 from .tenant import (TenantListView, TenantView)
 from .tenant_invitation import (InvitedTenantView, TenantInvitationCodeListView)
 from .tenant_user import (TenantUserListView, TenantUserView)

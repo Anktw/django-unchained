@@ -10,15 +10,15 @@ from django.conf import settings
 class PasswordResetCodeSerializer(BaseModelSerializer):
     class Meta(BaseModelSerializer.Meta):
         model = models.PasswordReset
-        read_only_fields = (('reset_code', 'valid_until',) + BaseModelSerializer.Meta.read_only_fields)
+        read_only_fields = (('reset_code', 'valid_till',) + BaseModelSerializer.Meta.read_only_fields)
 
     def create(self, validated_data):
         user = models.User.objects.filter(email=validated_data['email']).first()
         if not user:
             raise exceptions.EmailNotRegistered(f'{validated_data["email"]} is not signed up.')
 
-        validated_data['user'] = user
-        password_reset_code = models.PasswordReset.objects.create(**validated_data)
+        # Remove user from validated_data since PasswordReset model doesn't have a user field
+        password_reset_code = models.PasswordReset(**validated_data)
         password_reset_code.set_reset()
         password_reset_code.save()
         return password_reset_code
@@ -51,7 +51,7 @@ class PasswordResetSerializer(BaseModelSerializer):
             raise ValidationError(f'Reset code for {data["email"]} is invalid.')
 
         password_reset_code = query.get()
-        if utils.get_utc_now() > password_reset_code.valid_until:
+        if utils.get_utc_now() > password_reset_code.valid_till:
             raise exceptions.PasswordResetCodeExpired()
         return data
 

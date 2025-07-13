@@ -22,7 +22,7 @@ class PasswordResetCodeView(APIView):
     
     @transaction.atomic
     def post(self,request):
-        serializer = serializers.PasswordResetCodeSerializer(data=request.data, user=request.user)
+        serializer = serializers.PasswordResetCodeSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         reset_code = serializer.save()
 
@@ -37,7 +37,7 @@ class PasswordResetCodeView(APIView):
                 f'Please take a second to reset your password '
                 f'from the following URL.\n{url}\n\n'
                 f'Note that the above link expires in '
-                f'{settings.PASSWORD_RESET_CODE_LIFETIME_MINS} minutes.\n')
+                f'{settings.PASSWORD_RESET_LIFETIME_MINS} minutes.\n')
         email = EmailMessage(subject=subject, body=body, to=[email])
         email.send()
     
