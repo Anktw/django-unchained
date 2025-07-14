@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
     'core.apps.CoreConfig',
     'api.apps.ApiConfig',
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -241,6 +242,7 @@ REST_FRAMEWORK = {
     'DEFAULT_THROTTLE_RATES': {'anon': env.str('DRF_THROTTLE_RATES_ANONYMOUS'),'user': env.str('DRF_THROTTLE_RATES_USER'),},
     'EXCEPTION_HANDLER': 'api.resources.exception_handler.custom_exception_handler',
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     'PAGE_SIZE': 10,
 }
 
@@ -255,6 +257,12 @@ SIMPLE_JWT = {
     'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
     'USER_ID_FIELD': 'id',
     'UPDATE_LAST_LOGIN': env.bool('UPDATE_LAST_LOGIN'),
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Django Unchained API',
+    'DESCRIPTION': 'Your Django REST API',
+    'VERSION': '1.0.0',
 }
 
 # Email
