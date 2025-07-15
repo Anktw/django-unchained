@@ -1,9 +1,34 @@
 # Django-Unchained
-* Django RESTful API server for Single Page Application
-* Multi-tenant application working with Postgresql and gunicorn
-* Unit test with pytest, not with Django test
 
-## Get started
+* Restful API server for Single Page Application (SPA) using Django
+* Multi-tenant application working with Postgresql and gunicorn
+* Pytest for unit testing, not with Django test
+* Dockerized
+
+## Quick Start
+1. 📋 Clone repository -> 
+```git clone https://github.com/Anktw/django-unchained.git```
+
+2. 📦 Install dependencies:
+Note: virtualenv is strongly recommended.
+``` python -m venv .venv```
+```.\venv\Scripts\activate```(windows)
+```source .venv/bin/activate```(Linux)
+Then install dependencies:
+```pip install -r requirements.txt```
+
+
+3. 🔑 Setup environment variables -> rename env.example to .env and fill the values
+
+```cp env.example .env```
+
+4. 📊 Create a database in PostgreSQL.
+
+
+
+
+
+
 ### 0. Use docker-compose
 If you use docker-compose, you just follow step 3, 7 and 9 first. And then launch docker-compose as below.
 ```
