@@ -34,7 +34,7 @@ If you mess up database tables for some reasons and would like to reset db, you 
 $ python manage.py reset_db
 ```
 and then make migrations.
-```
+
 6. 🧪 Run Tests
 ```pytest```
 
