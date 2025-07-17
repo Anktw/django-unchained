@@ -5,7 +5,8 @@
 * Pytest for unit testing, not with Django test
 * Dockerized
 
-## Quick Start
+## Setup (Without Docker)
+
 1. 📋 Clone repository -> 
 ```git clone https://github.com/Anktw/django-unchained.git```
 
@@ -17,40 +18,70 @@ Note: virtualenv is strongly recommended.
 Then install dependencies:
 ```pip install -r requirements.txt```
 
-
 3. 🔑 Setup environment variables -> rename env.example to .env and fill the values
-
 ```cp env.example .env```
 
 4. 📊 Create a database in PostgreSQL.
+using pgAdmin or by command line:
+```psql -U postgres -c "CREATE DATABASE db_name;"```
+
+5. 🏗️ Run migrations
+```python manage.py makemigrations```
+```python manage.py migrate```
+
+6. 🧪 Run Tests
+```pytest```
+
+7. 🏃 Run the Development Server
+```python manage.py runserver```
+
+8. 🌐 Access the Application
+Navigate to `http://localhost:8000/api/docs/` in your web browser to access the API documentation.
+
+## Docker Setup
+
+1. 🐳 Build and Run the Docker Containers
+```docker-compose up --build```
+
+2. 🌐 Access the Application
+Navigate to `http://localhost:8000/api/docs/` in your web browser to access the API documentation.
+
+3. 🧪 Run Tests in Docker
+```docker-compose exec web pytest```
+
+4. ✔️ Check Running Containers
+```docker ps -a```
+
+## Installed Packages
 
 
 
+## API Endpoints
+
+| Endpoint | Usage | Request | Auth Required |
+| -------- | ----- | --------| ------------- |
+| <sup><b>POST /api/v1/token/</b></sup> | Get access token and refresh token | email, password | False |
+| <sup><b>POST /api/v1/token/refresh/</b></sup> | Refresh access token | refresh | True |
+| <sup><b>POST /api/v1/token/verify/</b></sup> | Verify access token validity | N/A | True |
+| <sup><b>POST /api/v1/token/revoke/</b></sup> | Revoke access token and refresh token | refresh | True |
+| <sup><b>POST /api/v1/users/</b></sup> | Create user account | first_name, last_name, email, image, password, verification_code or invitation_code | True |
+| <sup><b>GET /api/v1/users/\<int:id\>/</b></sup> | Get user data | N/A | True |
+| <sup><b>PUT /api/v1/users/\<int:id\>/</b></sup> | Update user data | first_name and\/or last_name and\/or image | True |
+| <sup><b>DELETE /api/v1/users/\<int:id\>/</b></sup> | Delete user account | N/A | True |
+| <sup><b>PUT /api/v1/users/\<int:id\>/password/</b></sup> | Update user password | password, new_password | True |
+| <sup><b>GET /api/v1/users/\<int:id\>/tenants/</b></sup> | Get associated tenant list | N/A | True |
+| <sup><b>POST /api/v1/email/signup/verification/</b></sup> | Create email verification code and send signup link by email | email | False |
+| <sup><b>POST /api/v1/password/reset-code/</b></sup> | Create password reset code and send reset link by email | email | False |
+| <sup><b>POST /api/v1/password/reset/</b></sup> | Reset password with reset code | email, reset_code | False |
+| <sup><b>POST /api/v1/tenants/</b></sup> | Create tenant | name, description | True |
+| <sup><b>GET /api/v1/tenants/\<str:domain\>/</b></sup> | Get tenant data | N/A | True |
+| <sup><b>POST /api/v1/tenants/\<str:domain\>/invitation-codes/</b></sup> | Create invitation code to tenant and send link by email | tenant_id, tenant_user_id, email | True |
+| <sup><b>POST /api/v1/tenants/invited/</b></sup> | Get invited tenant data | email, invitation_code | True |
+| <sup><b>GET /api/v1/tenants/\<str:domain\>/users/</b></sup> | Get tenant user list of tenant with specified domain | N/A | True |
+| <sup><b>POST /api/v1/tenants/\<str:domain\>/users/</b></sup> | Create tenant user | tenant_id, user_id, invitation_code | True |
+| <sup><b>GET /api/v1/tenants/\<str:domain\>/users/\<int:id\>/</b></sup> | Get tenant user data | N/A | True |
 
 
-
-### 0. Use docker-compose
-If you use docker-compose, you just follow step 3, 7 and 9 first. And then launch docker-compose as below.
-```
-$ docker-compose -p <project-name> up -d
-Eg.
-$ docker-compose -p my_project up -d
-```
-You can check containers are running correctly.
-```
-$ docker ps -a
-```
-Once you checked containers are up and running, proceed to step 11.
-
-### 1. Setup python virtualenv
-Using Python virtualenv is strongly recommended. There're many tutorials to set it up so google it.
-### 2. Pip install in virtualenv
-```
-$ pip install -r requirements.txt
-```
-### 3. Edit .env file (or pytest.ini for test)
-```
-$ cp dot.env.default .env
 ```
 #### Table of Environmental Variables
 | Variable Name | Definition | Example |
@@ -227,30 +258,6 @@ When you define constant value, define class inheriting Enum to make it uneditab
 ### Add custom exceptions
 Exceptions are implemented in api/common/exceptions.py file. Inherit rest_framework.exceptions.APIException.
 If you'd like to assign specific HTTP status code for each exception, edit api/resources/exception_handler.py, exc2status_map dictionary.
-
-## Default endpoints
-| Endpoint | Usage | Request | Auth Required |
-| -------- | ----- | --------| ------------- |
-| <sup><b>POST /api/v1/token/</b></sup> | Get access token and refresh token | email, password | False |
-| <sup><b>POST /api/v1/token/refresh/</b></sup> | Refresh access token | refresh | True |
-| <sup><b>POST /api/v1/token/verify/</b></sup> | Verify access token validity | N/A | True |
-| <sup><b>POST /api/v1/token/revoke/</b></sup> | Revoke access token and refresh token | refresh | True |
-| <sup><b>POST /api/v1/users/</b></sup> | Create user account | first_name, last_name, email, image, password, verification_code or invitation_code | True |
-| <sup><b>GET /api/v1/users/\<int:id\>/</b></sup> | Get user data | N/A | True |
-| <sup><b>PUT /api/v1/users/\<int:id\>/</b></sup> | Update user data | first_name and\/or last_name and\/or image | True |
-| <sup><b>DELETE /api/v1/users/\<int:id\>/</b></sup> | Delete user account | N/A | True |
-| <sup><b>PUT /api/v1/users/\<int:id\>/password/</b></sup> | Update user password | password, new_password | True |
-| <sup><b>GET /api/v1/users/\<int:id\>/tenants/</b></sup> | Get associated tenant list | N/A | True |
-| <sup><b>POST /api/v1/email/signup/verification/</b></sup> | Create email verification code and send signup link by email | email | False |
-| <sup><b>POST /api/v1/password/reset-code/</b></sup> | Create password reset code and send reset link by email | email | False |
-| <sup><b>POST /api/v1/password/reset/</b></sup> | Reset password with reset code | email, reset_code | False |
-| <sup><b>POST /api/v1/tenants/</b></sup> | Create tenant | name, description | True |
-| <sup><b>GET /api/v1/tenants/\<str:domain\>/</b></sup> | Get tenant data | N/A | True |
-| <sup><b>POST /api/v1/tenants/\<str:domain\>/invitation-codes/</b></sup> | Create invitation code to tenant and send link by email | tenant_id, tenant_user_id, email | True |
-| <sup><b>POST /api/v1/tenants/invited/</b></sup> | Get invited tenant data | email, invitation_code | True |
-| <sup><b>GET /api/v1/tenants/\<str:domain\>/users/</b></sup> | Get tenant user list of tenant with specified domain | N/A | True |
-| <sup><b>POST /api/v1/tenants/\<str:domain\>/users/</b></sup> | Create tenant user | tenant_id, user_id, invitation_code | True |
-| <sup><b>GET /api/v1/tenants/\<str:domain\>/users/\<int:id\>/</b></sup> | Get tenant user data | N/A | True |
 
 ## Helpful Commnads for Trouble Shooting
 ### Clearning up docker containers
