@@ -16,13 +16,9 @@ git clone https://github.com/Anktw/django-unchained.git
 Note: virtualenv is strongly recommended.
 ``` 
 python -m venv .venv
+.\venv\Scripts\activate  (windows)
+source .venv/bin/activate  (Linux)
 ```
-```
-.\venv\Scripts\activate
-```(windows)
-```
-source .venv/bin/activate
-```(Linux)
 Then install dependencies:
 ```
 pip install -r requirements.txt
@@ -75,11 +71,13 @@ docker-compose up --build
 Navigate to `http://localhost:8000/api/docs/` in your web browser to access the API documentation.
 
 3. 🧪 Run Tests in Docker
+
 ```
 docker-compose exec web pytest
 ```
 
 4. ✔️ Check Running Containers
+
 ```
 docker ps -a
 ```
@@ -115,6 +113,7 @@ docker ps -a
 
 
 #### Table of Environmental Variables
+
 | Variable Name | Definition | Example |
 | ------------- | ---------- | ------- | 
 | <sup><b>APP_NAME</b></sup> | Application name. Used description in email, for example. | 'My Web App' |
