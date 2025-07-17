@@ -82,7 +82,6 @@ Navigate to `http://localhost:8000/api/docs/` in your web browser to access the 
 | <sup><b>GET /api/v1/tenants/\<str:domain\>/users/\<int:id\>/</b></sup> | Get tenant user data | N/A | True |
 
 
-```
 #### Table of Environmental Variables
 | Variable Name | Definition | Example |
 | ------------- | ---------- | ------- | 
