@@ -8,26 +8,42 @@
 ## Setup (Without Docker)
 
 1. 📋 Clone repository -> 
-```git clone https://github.com/Anktw/django-unchained.git```
+```
+git clone https://github.com/Anktw/django-unchained.git
+```
 
 2. 📦 Install dependencies:
 Note: virtualenv is strongly recommended.
-``` python -m venv .venv```
-```.\venv\Scripts\activate```(windows)
-```source .venv/bin/activate```(Linux)
+``` 
+python -m venv .venv
+```
+```
+.\venv\Scripts\activate
+```(windows)
+```
+source .venv/bin/activate
+```(Linux)
 Then install dependencies:
-```pip install -r requirements.txt```
+```
+pip install -r requirements.txt
+```
 
 3. 🔑 Setup environment variables -> rename env.example to .env and fill the values
-```cp env.example .env```
+```
+cp env.example .env
+```
 
 4. 📊 Create a database in PostgreSQL.
 using pgAdmin or by command line:
-```psql -U postgres -c "CREATE DATABASE db_name;"```
+```
+psql -U postgres -c "CREATE DATABASE db_name;"
+```
 
 5. 🏗️ Run migrations
-```python manage.py makemigrations```
-```python manage.py migrate```
+```
+python manage.py makemigrations
+python manage.py migrate
+```
 
 If you mess up database tables for some reasons and would like to reset db, you can drop all tables by follow. You don't need to call the follow for test because reset_db and migrate are called every time pytest is executed.
 ```
@@ -36,10 +52,14 @@ $ python manage.py reset_db
 and then make migrations.
 
 6. 🧪 Run Tests
-```pytest```
+```
+pytest
+```
 
 7. 🏃 Run the Development Server
-```python manage.py runserver```
+```
+python manage.py runserver
+```
 
 8. 🌐 Access the Application
 Navigate to `http://localhost:8000/api/docs/` in your web browser to access the API documentation.
@@ -47,16 +67,22 @@ Navigate to `http://localhost:8000/api/docs/` in your web browser to access the 
 ## Docker Setup
 
 1. 🐳 Build and Run the Docker Containers
-```docker-compose up --build```
+```
+docker-compose up --build
+```
 
 2. 🌐 Access the Application
 Navigate to `http://localhost:8000/api/docs/` in your web browser to access the API documentation.
 
 3. 🧪 Run Tests in Docker
-```docker-compose exec web pytest```
+```
+docker-compose exec web pytest
+```
 
 4. ✔️ Check Running Containers
-```docker ps -a```
+```
+docker ps -a
+```
 
 ## Installed Packages
 
