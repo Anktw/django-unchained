@@ -151,15 +151,3 @@ docker ps -a
 
 
 ## Directory Structure
-
-### Clearning up database
-You may need to delete directory mounted to postgres docker container, especially when you clean up all relevant docker containers to start over the setup.
-```
-Eg.)
-$ sudo rm -r ./data/postgres_dev
-```
-Or you may like to clear all record in db and reset sequences as well. In the case drop all tables and rebuild tables again.
-```
-$ python manage.py reset_db
-$ python manage.py migrate
-```
