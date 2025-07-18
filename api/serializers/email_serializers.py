@@ -6,7 +6,7 @@ from django.conf import settings
 class EmailVerificationCodeSerializer(BaseModelSerializer):
     class Meta(BaseModelSerializer.Meta):
         model = models.EmailVerification
-        read_only_fields = ('valid_until', 'verification_code',) + BaseModelSerializer.Meta.read_only_fields
+        read_only_fields = ('valid_till', 'verification_code',) + BaseModelSerializer.Meta.read_only_fields
     
     def create(self, validated_data):
         validated_data = self.creatorstamp(validated_data)
@@ -20,7 +20,7 @@ class EmailVerificationSerializer(BaseModelSerializer):
 
     class Meta(BaseModelSerializer.Meta):
         model = models.EmailVerification
-        read_only_fields = ('valid_until',) + BaseModelSerializer.Meta.read_only_fields
+        read_only_fields = ('valid_till',) + BaseModelSerializer.Meta.read_only_fields
 
 class VerifiedEmailSerializer(BaseSerializer):
     verification_code = serializers.CharField(max_length=settings.EMAIL_VERIFICATION_LENGTH, write_only=True)
